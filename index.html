@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <title>Лысков Герман - Портфолио</title>
+
+    <link rel="shortcut icon" href="{% static './icons/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+
+</head>
+<body>
+    <!-- header -->
+        
+        <nav>
+            <h1>Лысков Герман</h1>
+            <ul class="navigation">
+                <li><a href="#about-me">Обо мне</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#comments">Отзывы</a></li>
+                <li><a href="#contact">Контакт</a></li>
+            </ul>
+            <div class="burger">
+                <hr class="burger-hr one" id="1">
+                <hr class="burger-hr two" id="2">
+                <hr class="burger-hr three" id="3">
+            </div>
+        </nav>
+
+    <!-- header -->
+
+    <div class="wrapper">
+        <!-- AboutMe -->
+        <h2 id="about-me">Обо мне</h2>
+        <section class="about-me">
+            
+            <div class="img">
+                <img src="https://placehold.co/500?text=Мое+фото" alt="Мое фото" loading="lazy" class="my-img">
+            </div>
+            <div class="bio">
+                <div class="bio-text">
+                    Привет, меня зовут Герман и это мое резюме. Я занимаюсь программировнием с 7-го класса (с 2020-го). Первое время изучал Python (на нем написан Backend этого сайта - Django). Затем решил изучить C++, и пошло-поехало: HTML, JavaScript, CSS, Bootstrap. <p style="margin: 0;">Любимое направление: кибербезопасность</p>.Начиная с 8-го класса школьные проекты делал по информатике: Чат бот для Telegram, простая игра на Python (Pygame) и Сайт <p style="margin: 0;">Если вы хотите что-то еще, то <a href="#contact" style="text-decoration: underline;">внизу</a> есть форма для отправки сообщения мне</p>
+                </div>
+                
+            </div>
+        </section>
+        <!-- AboutMe -->
+
+        <!-- Projects -->
+        <h2>Проекты</h2>
+        <section class="projects" id="projects">
+                <div class="projects-wrapper">
+                    <div class="projects-box">
+                        <div class="projects-container">
+                            {% for project in projects %}
+                            <div class="project-filling">
+                                <img src="{{ project.image.url }}" alt="Фото проекта", loading="eager" class="project-image">
+                                <div class="project-text">
+                                    <h3>{{ project.name }}</h3>
+                                    <i>{{ project.description }}</i>
+                                    <div class="project-about">
+                                        <div class="container-about">
+                                            Создано: <span id="proj-created-at">{{ project.created_at }}</span>
+                                            <span id="proj-more"><a href="{{ project.more }}" target="_blank">Подробнее</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>  
+                    </div>
+                </div>
+
+                <div class="slide-buttons">
+                    <a class="slide-button left" onclick="slideLeft()"><</a>
+                    <a class="slide-button right" onclick="slideRight()">></a>
+                </div>
+            </div>
+            
+        </section>
+        <!-- Projects -->
+
+        <!-- Comments -->
+        <h2>Отзывы</h2>
+        <section class="comments" id="comments">
+            <div class="comments-wrapper">
+                {% for comment in comments %}
+                <div class="comment">
+                    <div class="comment-info">
+                        <ul>
+                            <li><h4><i>{{ comment.pushed_by }}</i></h4></li>
+                            <li>Опубликовано: <span class="comment-public-date"> {{ comment.pushed_at }} </span></li>
+                        </ul>
+                    </div>
+                    <i>{{ comment.text }}</i>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </section>
+        <!-- Comments -->
+
+        <!-- Contact -->
+        <h2>Написать мне</h2>
+        <section class="contact" id="contact">
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <div class="form-item">
+                        <label for="name">Имя</label>
+                        <input type="text" name="name" id="name" placeholder="Как мне к вам обращаться..." required>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Ваш email для обратной связи..." required>
+                    </div>
+                    <div class="form-item">
+                        <label for="message">Сообщение</label>
+                        <textarea name="message" id="message" cols="60" rows="18" placeholder="Напишите, что бы вы хотели мне сообщить..." aria-checked="" required></textarea>
+                    </div>
+                    <div class="form-item">
+                        <input type="submit" value="Отправить" class="submit">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Contact -->
+
+    </div>
+
+    <div class="scrollUp">
+        <div class="hr-container">
+            <hr class="petal-left">
+            <hr class="stem">
+            <hr class="petal-right">
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Copyright - 2024</p>
+        <p>Создано и опубликовано: <a href=""><i>g3rs_0ne</i></a></p>
+    </footer>
+
+    <script src="{% static './js/сarousel.js' %}"></script>
+    <script src="{% static './js/burger_menu.js' %}"></script>
+    <script src="{% static './js/animations.js' %}"></script>
+
+    <script>
+        slideLeft();
+    </script>
+</body>
+</html>
