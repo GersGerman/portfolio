@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +6,8 @@
 
     <title>Лысков Герман - Портфолио</title>
 
-    <link rel="shortcut icon" href="{% static './icons/favicon.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static './css/style.css' %}">
+    <link rel="shortcut icon" href="./static/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/css/style.css">
 
 </head>
 <body>
@@ -54,21 +53,24 @@
                 <div class="projects-wrapper">
                     <div class="projects-box">
                         <div class="projects-container">
-                            {% for project in projects %}
+                            
                             <div class="project-filling">
-                                <img src="{{ project.image.url }}" alt="Фото проекта", loading="eager" class="project-image">
+                                <img src="./static/icons/RZkKEbKIrCs.jpg" alt="Фото проекта", loading="eager" class="project-image">
                                 <div class="project-text">
-                                    <h3>{{ project.name }}</h3>
-                                    <i>{{ project.description }}</i>
+                                    <h3>Сайт портфолио</h3>
+                                    <i>
+                                        Это этот сайт. В разработке исользовался JavaScript - бургер меню, некоторые анимации и карусель проектов. CSS нужен был для адаптивной верстки под разные типы устройств (Телефон, Планшет, Ноутбук, Стационарный ПК и большие экраны),
+                                        а так же под различные темы устройства (темная или светлая).
+                                    </i>
                                     <div class="project-about">
                                         <div class="container-about">
-                                            Создано: <span id="proj-created-at">{{ project.created_at }}</span>
-                                            <span id="proj-more"><a href="{{ project.more }}" target="_blank">Подробнее</a></span>
+                                            Создано: <span id="proj-created-at">27.07.2023</span>
+                                            <span id="proj-more"><a href="#" target="_blank">Подробнее</a></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
+        
                         </div>  
                     </div>
                 </div>
@@ -86,17 +88,8 @@
         <h2>Отзывы</h2>
         <section class="comments" id="comments">
             <div class="comments-wrapper">
-                {% for comment in comments %}
-                <div class="comment">
-                    <div class="comment-info">
-                        <ul>
-                            <li><h4><i>{{ comment.pushed_by }}</i></h4></li>
-                            <li>Опубликовано: <span class="comment-public-date"> {{ comment.pushed_at }} </span></li>
-                        </ul>
-                    </div>
-                    <i>{{ comment.text }}</i>
-                </div>
-                {% endfor %}
+                <h2>Отзывов пока нет!</h2>
+                <i>Напишите мне, чтобы оставить отзыв</i>
 
             </div>
 
@@ -144,9 +137,9 @@
         <p>Создано и опубликовано: <a href=""><i>g3rs_0ne</i></a></p>
     </footer>
 
-    <script src="{% static './js/сarousel.js' %}"></script>
-    <script src="{% static './js/burger_menu.js' %}"></script>
-    <script src="{% static './js/animations.js' %}"></script>
+    <script src="./static/js/сarousel.js"></script>
+    <script src="./static/js/burger_menu.js"></script>
+    <script src="./static/js/animations.js"></script>
 
     <script>
         slideLeft();
